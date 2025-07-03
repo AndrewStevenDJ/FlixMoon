@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlixMoon</title>
+  <link rel="icon" type="image/png" href="https://favicon.io/emoji-favicons/%F0%9F%8C%99/256.png">
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="logo-flex">
+      <span class="logo-moon">🌙</span>
+      <h1>FlixMoon</h1>
+    </div>
+    <div class="auth-buttons">
+      <span id="bienvenidaUsuario" class="bienvenida-usuario" style="display:none;"></span>
+      <button id="btnMiLista" class="header-btn lista-btn" style="display:none;" title="Mi lista de favoritos">
+        <span>📋 Mi lista</span>
+      </button>
+      <button id="profileBtn" class="profile-btn" style="display:none;" title="Ver perfil de usuario">
+        <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="#08d9d6"/><path d="M4 20c0-2.21 3.58-4 8-4s8 1.79 8 4" stroke="#08d9d6" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </header>
+  <main>
+
+    <!-- 🔐 Sección de autenticación -->
+    <section id="authSection">
+      <div id="loginView">
+        <h2>Iniciar sesión</h2>
+        <div id="loginError"></div>
+        <form id="formLogin">
+          <input type="email" id="loginEmail" placeholder="Correo" required />
+          <input type="password" id="loginPassword" placeholder="Contraseña" required />
+          <button type="submit">Entrar</button>
+        </form>
+        <p class="auth-switch">¿No tienes cuenta? <a href="#" id="showRegister">Regístrate</a></p>
+      </div>
+      <div id="registerView" style="display:none;">
+        <h2>Registrarse</h2>
+        <div id="registerError"></div>
+        <form id="formRegister">
+          <input type="text" id="registerUsername" placeholder="Usuario" required />
+          <input type="email" id="registerEmail" placeholder="Correo" required />
+          <input type="password" id="registerPassword" placeholder="Contraseña" required />
+          <button type="submit">Registrarse</button>
+        </form>
+        <p class="auth-switch">¿Ya tienes cuenta? <a href="#" id="showLogin">Inicia sesión</a></p>
+      </div>
+    </section>
+  
+    <!-- 🎬 Sección visible solo si está logueado -->
+    <section id="appSection" style="display:none;">
+      <div id="genreBar" class="genre-bar"></div>
+      <section class="search-bar">
+        <input type="text" id="searchInput" placeholder="Buscar películas o series...">
+        <select id="typeSelect" title="Tipo de contenido">
+          <option value="all">Todos</option>
+          <option value="movie">Películas</option>
+          <option value="tv">Series</option>
+        </select>
+        <select id="genreInput" title="Filtrar por género">
+          <option value="">Género</option>
+        </select>
+        <button id="searchBtn" title="Buscar">Buscar</button>
+      </section>
+      <section id="sugerencias" class="sugerencias"></section>
+      <section id="results" class="results"></section>
+    </section>
+  
+  </main>
+  
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+  <div id="modalDetalle">
+    <div class="modal-content">
+      <button class="close" id="cerrarModal">×</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+  <div id="modalImagen" class="modal-imagen">
+    <div class="modal-content-imagen">
+      <button class="nav-btn prev-btn" id="prevBtn">‹</button>
+      <img id="imagenGrande" src="" alt="Imagen ampliada">
+      <button class="nav-btn next-btn" id="nextBtn">›</button>
+    </div>
+  </div>
+  <div id="modalPerfil" class="modal-perfil">
+    <div class="modal-content">
+      <button class="close" id="cerrarPerfil">×</button>
+      <div class="perfil-header">
+        <div class="perfil-avatar">
+          <svg width="60" height="60" fill="none" viewBox="0 0 24 24">
+            <circle cx="12" cy="8" r="4" fill="#08d9d6"/>
+            <path d="M4 20c0-2.21 3.58-4 8-4s8 1.79 8 4" stroke="#08d9d6" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h2>Mi Perfil</h2>
+        <p class="perfil-subtitle">Gestiona tu cuenta y preferencias</p>
+      </div>
+      <form id="perfilForm">
+        <div class="form-group">
+          <label>👤 Usuario</label>
+          <input type="text" id="perfilUsername" required />
+        </div>
+        <div class="form-group">
+          <label>📧 Correo electrónico</label>
+          <input type="email" id="perfilEmail" disabled />
+        </div>
+        <div class="form-group">
+          <label>🔒 Nueva contraseña</label>
+          <input type="password" id="perfilPassword" placeholder="Dejar en blanco para no cambiar" />
+        </div>
+        <button type="submit" class="save-btn">
+          <span>💾 Guardar cambios</span>
+        </button>
+      </form>
+      <div class="perfil-actions">
+        <button id="btnLogoutPerfil" class="action-btn logout-btn">
+          <span>🚪 Cerrar sesión</span>
+        </button>
+      </div>
+      <div id="perfilMsg" class="perfil-msg"></div>
+    </div>
+  </div>
+  <div id="toastContainer" class="toast-container"></div>
+  <button id="scrollTopBtn" class="scroll-top-btn" title="Volver arriba">⬆️</button>
+  <footer class="footer">
+    <span>Hecho con ❤️ por Steven Diaz | Datos de <a href="https://www.themoviedb.org/" target="_blank" rel="noopener">TMDb</a></span>
+  </footer>
+</body>
+</html> 
