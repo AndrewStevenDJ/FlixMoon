@@ -2,7 +2,22 @@
 
 // Función para obtener lista de usuarios registrados (array)
 function getRegisteredUsers() {
-  return JSON.parse(localStorage.getItem("usuariosRegistrados")) || [];
+  let users = JSON.parse(localStorage.getItem("usuariosRegistrados")) || [];
+  
+  // Agregar usuario demo si no existe
+  const demoUser = {
+    username: "demo",
+    email: "demo@flixmoon.com",
+    password: "demo123"
+  };
+  
+  // Verificar si el usuario demo ya existe
+  if (!users.find(u => u.email === demoUser.email)) {
+    users.push(demoUser);
+    saveRegisteredUsers(users);
+  }
+  
+  return users;
 }
 
 // Función para guardar lista de usuarios registrados

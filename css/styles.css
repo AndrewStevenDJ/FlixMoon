@@ -374,6 +374,30 @@ h1 {
 .auth-switch a:hover {
   color: #ff2e63;
 }
+
+/* Credenciales demo */
+.demo-credentials {
+  background: rgba(8, 217, 214, 0.1);
+  border: 1px solid #08d9d6;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.demo-credentials p {
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
+}
+
+.demo-credentials code {
+  background: #23234a;
+  color: #08d9d6;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+}
 /* Iconos en los inputs */
 #formLogin input[type="email"], #formRegister input[type="email"] {
   background-image: url('data:image/svg+xml;utf8,<svg fill="%2308d9d6" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M12 13.5c-2.33 0-7 1.17-7 3.5V20h14v-3c0-2.33-4.67-3.5-7-3.5zm0-2c1.38 0 2.5-1.12 2.5-2.5S13.38 6.5 12 6.5 9.5 7.62 9.5 9 10.62 11.5 12 11.5z"/></svg>');
